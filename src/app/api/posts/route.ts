@@ -10,7 +10,9 @@ export async function POST(request: Request) {
       headers: { "Content-Type": "application/json" },
     });
 
-  const postId = url.split("status/")[1];
+  const postId = url.split("status/")[1].split("?")[0];
+
+  console.log(postId)
 
   const tweet = await scrapper.getTweet(postId);
 
