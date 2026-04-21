@@ -5,6 +5,7 @@ import parser from "html-react-parser";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiMessage } from "react-icons/bi";
 import { FaRetweet } from "react-icons/fa6";
+import { useCustomizationStore } from "@/store/customizationStore";
 
 export type TweetComponentType = {
   avatar: string;
@@ -22,9 +23,17 @@ export default function TweetComponent(tweet: TweetComponentType) {
     /@(\w+)/g,
     `<span style="color:#1d9bf0;">@$1</span>`,
   );
+  const { theme } = useCustomizationStore();
+
+  const themeStyle =
+    theme === "light"
+      ? "bg-white text-neutral-900"
+      : "bg-neutral-800 text-white";
 
   return (
-    <div className="z-10 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-4 rounded-xl">
+    <div
+      className={`z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-4 rounded-xl ${themeStyle}`}
+    >
       <div className="flex gap-2 items-center mb-4">
         <Image
           width={40}

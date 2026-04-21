@@ -1,5 +1,6 @@
 import React from "react";
 import Background from "./Background";
+import Theme from "./Theme";
 
 export default function Customization() {
   return (
@@ -9,6 +10,7 @@ export default function Customization() {
       </h1>
 
       <Background />
+      <Theme  />
     </div>
   );
 }
