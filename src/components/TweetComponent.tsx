@@ -24,7 +24,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
   );
 
   return (
-    <div className="my-20 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-4 rounded-xl min-w-30">
+    <div className="z-10 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-4 rounded-xl">
       <div className="flex gap-2 items-center mb-4">
         <Image
           width={40}

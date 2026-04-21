@@ -5,6 +5,8 @@ import Button from "./Button";
 import axios from "axios";
 import TweetComponent, { TweetComponentType } from "./TweetComponent";
 import { BarLoader, BounceLoader } from "react-spinners";
+import Customization from "./Customization";
+import Preview from "./Preview";
 
 export default function Hero() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -37,8 +39,8 @@ export default function Hero() {
   };
 
   return (
-    <div>
-      <div className="flex justify-center gap-4 items-center w-full">
+    <div className="flex justify-center gap-4 items-center flex-col">
+      <div className="flex justify-center gap-4 items-center">
         <Input ref={inputRef} />
 
         <Button onclick={fetchPost} />
@@ -48,18 +50,7 @@ export default function Hero() {
 
       <BarLoader loading={loading} className="mx-auto mt-20 " />
 
-      {post && (
-        <TweetComponent
-          avatar={post.avatar}
-          name={post.name}
-          username={post.username}
-          html={post.html}
-          date={post.date}
-          likes={post.likes}
-          replies={post.replies}
-          retweets={post.retweets}
-        />
-      )}
+      {post && <Preview post={post} />}
     </div>
   );
 }
