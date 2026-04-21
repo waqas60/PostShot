@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export default function Button() {
-  return (
-    <div>
-        <button>Generate</button>
-    </div>
-  )
+type ButtonType = {
+  onclick: () => void;
+};
+
+export default function Button(button: ButtonType) {
+  return <button onClick={() => button.onclick()}>Generate</button>;
 }

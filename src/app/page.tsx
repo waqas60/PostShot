@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import Hero from "@/components/Hero";
 import Input from "@/components/Input";
 import Image from "next/image";
 
@@ -10,11 +11,7 @@ export default function Home() {
         <span className="text-orange-500">a stunning image.</span>
       </h1>
 
-      <div className="flex justify-center gap-4 items-center w-full">
-        <Input />
-
-        <Button />
-      </div>
+      <Hero />
     </div>
   );
 }

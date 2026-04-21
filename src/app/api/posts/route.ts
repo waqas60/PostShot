@@ -12,12 +12,21 @@ export async function POST(request: Request) {
 
   const postId = url.split("status/")[1].split("?")[0];
 
-  console.log(postId)
+  //   console.log(postId);
 
   const tweet = await scrapper.getTweet(postId);
+  const user = await scrapper.getProfile(tweet?.username!);
 
-  return new Response(JSON.stringify(tweet), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
+  return new Response(
+    JSON.stringify({
+      html: tweet?.html,
+      avatar: user.avatar,
+      name: user.name,
+      username: user.username,
+    }),
+    {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    },
+  );
 }
