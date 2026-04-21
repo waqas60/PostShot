@@ -54,6 +54,10 @@ export default function Hero() {
           name={post.name}
           username={post.username}
           html={post.html}
+          date={post.date}
+          likes={post.likes}
+          replies={post.replies}
+          retweets={post.retweets}
         />
       )}
     </div>

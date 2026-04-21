@@ -15,14 +15,19 @@ export async function POST(request: Request) {
   //   console.log(postId);
 
   const tweet = await scrapper.getTweet(postId);
+
   const user = await scrapper.getProfile(tweet?.username!);
 
   return new Response(
     JSON.stringify({
-      html: tweet?.html,
       avatar: user.avatar,
       name: user.name,
       username: user.username,
+      html: tweet?.html,
+      date: tweet?.timeParsed,
+      likes: tweet?.likes,
+      replies: tweet?.replies,
+      retweets: tweet?.retweets,
     }),
     {
       status: 200,
