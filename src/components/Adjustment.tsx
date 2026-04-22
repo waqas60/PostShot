@@ -3,7 +3,8 @@ import { Slider } from "radix-ui";
 import React from "react";
 
 export default function Adjustment() {
-  const { fontSize, setFontSize, width, setWidth } = useCustomizationStore();
+  const { fontSize, setFontSize, width, setWidth, roundness, setRoundness } =
+    useCustomizationStore();
 
   return (
     <div className="p-4 space-y-6">
@@ -57,7 +58,34 @@ export default function Adjustment() {
 
           <Slider.Thumb
             className="block w-5 h-5 bg-[#f97316] rounded-[10px] hover:bg-orange-600 focus:outline-none"
-            aria-label="Font size"
+            aria-label="Width"
+          ></Slider.Thumb>
+        </Slider.Root>
+      </div>
+
+      <div>
+        <div className="flex justify-between items-center">
+          <span className="text-sm font-medium text-neutral-400">
+            Roundness
+          </span>
+          <span className="text-sm text-neutral-400">{roundness}px</span>
+        </div>
+
+        <Slider.Root
+          className="relative flex items-center select-none touch-none w-full h-5"
+          value={[roundness]}
+          max={32}
+          min={0}
+          step={1}
+          onValueChange={(vals) => setRoundness(vals[0])}
+        >
+          <Slider.Track className="bg-neutral-700 relative grow rounded-full h-0.75">
+            <Slider.Range className="absolute bg-[#f97316] rounded-full h-full"></Slider.Range>
+          </Slider.Track>
+
+          <Slider.Thumb
+            className="block w-5 h-5 bg-[#f97316] rounded-[10px] hover:bg-orange-600 focus:outline-none"
+            aria-label="Roundness"
           ></Slider.Thumb>
         </Slider.Root>
       </div>

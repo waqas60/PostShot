@@ -9,6 +9,8 @@ type CustomizationStore = {
   setFontSize: (f: number) => void;
   width: number;
   setWidth: (w: number) => void;
+  roundness: number;
+  setRoundness: (r: number) => void;
 };
 
 export const useCustomizationStore = create<CustomizationStore>((set) => ({
@@ -18,6 +20,8 @@ export const useCustomizationStore = create<CustomizationStore>((set) => ({
   setTheme: (th) => set({ theme: th }),
   fontSize: 12,
   setFontSize: (f) => set({ fontSize: f }),
-  width: 40,
+  width: 100,
   setWidth: (w) => set({ width: w }),
+  roundness: 0,
+  setRoundness: (r) => set({ roundness: r }),
 }));
