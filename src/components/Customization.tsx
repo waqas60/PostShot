@@ -10,7 +10,7 @@ export default function Customization() {
       </h1>
 
       <Background />
-      <Theme  />
+      <Theme />
     </div>
   );
 }

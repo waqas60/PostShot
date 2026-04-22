@@ -1,37 +1,35 @@
-import { Scraper } from "@the-convocation/twitter-scraper";
-
-const scrapper = new Scraper();
+import { getTweet } from "react-tweet/api";
 
 export async function POST(request: Request) {
   const { url } = await request.json();
-  if (!url)
-    return new Response(JSON.stringify({ message: "invalid data" }), {
-      status: 400,
-      headers: { "Content-Type": "application/json" },
-    });
 
-  const postId = url.split("status/")[1].split("?")[0];
+  if (!url) {
+    return Response.json({ message: "URL is required" }, { status: 400 });
+  }
 
-  //   console.log(postId);
+  const postId = url.split("status/")[1]?.split("?")[0];
+  const tweet = await getTweet(postId);
 
-  const tweet = await scrapper.getTweet(postId);
+  if (!tweet) {
+    return Response.json({ message: "Tweet not found" }, { status: 404 });
+  }
 
-  const user = await scrapper.getProfile(tweet?.username!);
+  const raw = tweet as any;
+  const bv = raw.card?.binding_values;
 
-  return new Response(
-    JSON.stringify({
-      avatar: user.avatar,
-      name: user.name,
-      username: user.username,
-      html: tweet?.html,
-      date: tweet?.timeParsed,
-      likes: tweet?.likes,
-      replies: tweet?.replies,
-      retweets: tweet?.retweets,
-    }),
-    {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    },
-  );
+  return Response.json({
+    avatar: tweet.user.profile_image_url_https,
+    name: tweet.user.name,
+    username: tweet.user.screen_name,
+    verified: tweet.user.is_blue_verified,
+    text: tweet.text,
+    date: tweet.created_at,
+    likes: tweet.favorite_count,
+    replies: tweet.conversation_count,
+    retweets: tweet.quoted_tweet?.retweet_count,
+    media:
+      tweet.mediaDetails?.map((m) => ({
+        url: m.media_url_https,
+      })) ?? [],
+  });
 }

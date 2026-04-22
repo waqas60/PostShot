@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import TweetComponent, { TweetComponentType } from "./TweetComponent";
 import Customization from "./Customization";
 import { useCustomizationStore } from "@/store/customizationStore";
@@ -16,7 +15,12 @@ export default function Preview({ post }: PreviewProps) {
 
       <div className="flex items-center gap-10 m-10">
         {post && (
-          <div style={{ background: background }} className="p-12 rounded-2xl">
+          <div
+            style={{
+              background: background,
+            }}
+            className="p-10 rounded-2xl"
+          >
             <TweetComponent {...post} />
           </div>
         )}

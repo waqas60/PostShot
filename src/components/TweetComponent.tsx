@@ -1,28 +1,25 @@
-import { HtmlProps } from "next/dist/shared/lib/html-context.shared-runtime";
 import Image from "next/image";
 import React from "react";
-import parser from "html-react-parser";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiMessage } from "react-icons/bi";
 import { FaRetweet } from "react-icons/fa6";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { useCustomizationStore } from "@/store/customizationStore";
 
 export type TweetComponentType = {
   avatar: string;
   name: string;
   username: string;
-  html: string;
+  verified?: boolean;
+  text: string;
   date: string;
   likes: number;
   replies: number;
   retweets: number;
+  media?: { url: string }[];
 };
 
 export default function TweetComponent(tweet: TweetComponentType) {
-  const formattedHTML = tweet.html.replace(
-    /@(\w+)/g,
-    `<span style="color:#1d9bf0;">@$1</span>`,
-  );
   const { theme } = useCustomizationStore();
 
   const themeStyle =
@@ -30,11 +27,17 @@ export default function TweetComponent(tweet: TweetComponentType) {
       ? "bg-white text-neutral-900"
       : "bg-neutral-800 text-white";
 
+  const formattedText = tweet.text
+    .replace(/https?:\/\/t\.co\/\S+/g, "")
+    .replace(/\n/g, "<br/>")
+    .replace(/@(\w+)/g, `<span style="color:#1d9bf0;">@$1</span>`)
+    .trim();
+
   return (
     <div
-      className={`z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-4 rounded-xl ${themeStyle}`}
+      className={`z-10 max-w-120 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 rounded-xl ${themeStyle}`}
     >
-      <div className="flex gap-2 items-center mb-4">
+      <div className="flex gap-2 items-center">
         <Image
           width={40}
           height={40}
@@ -43,28 +46,51 @@ export default function TweetComponent(tweet: TweetComponentType) {
           className="rounded-full"
         />
         <div>
-          <p className="text-sm font-semibold">{tweet.name}</p>
+          <p className="text-sm font-semibold flex items-center gap-1">
+            {tweet.name}
+            {tweet.verified && (
+              <RiVerifiedBadgeFill className="text-[#1d9bf0] text-sm" />
+            )}
+          </p>
           <p className="text-xs text-[#536471]">@{tweet.username}</p>
         </div>
       </div>
 
-      <div className="text-xs">{parser(formattedHTML)}</div>
+      <div
+        className="text-sm leading-relaxed"
+        dangerouslySetInnerHTML={{ __html: formattedText }}
+      />
+
+      {tweet.media && tweet.media.length > 0 && (
+        <div className="mt-3 rounded-xl overflow-hidden border border-[#00000014]">
+          {tweet.media.map((m, i) => (
+            <img key={i} src={m.url} alt="" className="w-full object-cover" />
+          ))}
+        </div>
+      )}
 
       <p className="text-xs text-[#536471] border-y border-[#00000014] my-4 py-2">
-        {new Date(tweet.date).toLocaleString()}
+        {new Date(tweet.date).toLocaleString("en-US", {
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })}
       </p>
 
       <div className="flex gap-4 items-center text-xs text-[#536471]">
-        <p className="flex items-center gap-0.5">
-          <AiOutlineHeart />
+        <p className="flex items-center gap-1">
+          <AiOutlineHeart className="text-base" />
           {tweet.likes}
         </p>
-        <p className="flex items-center gap-0.5">
-          <BiMessage />
+        <p className="flex items-center gap-1">
+          <BiMessage className="text-base" />
           {tweet.replies}
         </p>
-        <p className="flex items-center gap-0.5">
-          <FaRetweet />
+        <p className="flex items-center gap-1">
+          <FaRetweet className="text-base" />
           {tweet.retweets}
         </p>
       </div>
