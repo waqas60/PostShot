@@ -5,6 +5,8 @@ type CustomizationStore = {
   setBackground: (bg: string) => void;
   theme: string;
   setTheme: (th: string) => void;
+  fontSize: number;
+  setFontSize: (f: number) => void;
 };
 
 export const useCustomizationStore = create<CustomizationStore>((set) => ({
@@ -12,4 +14,6 @@ export const useCustomizationStore = create<CustomizationStore>((set) => ({
   setBackground: (bg) => set({ background: bg }),
   theme: "light",
   setTheme: (th) => set({ theme: th }),
+  fontSize: 12,
+  setFontSize: (f) => set({ fontSize: f }),
 }));

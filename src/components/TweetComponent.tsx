@@ -20,7 +20,7 @@ export type TweetComponentType = {
 };
 
 export default function TweetComponent(tweet: TweetComponentType) {
-  const { theme } = useCustomizationStore();
+  const { theme, fontSize } = useCustomizationStore();
 
   const themeStyle =
     theme === "light"
@@ -57,7 +57,8 @@ export default function TweetComponent(tweet: TweetComponentType) {
       </div>
 
       <div
-        className="text-sm leading-relaxed"
+        className="mt-3 leading-relaxed"
+        style={{ fontSize: fontSize ? `${fontSize}px` : "14px" }} 
         dangerouslySetInnerHTML={{ __html: formattedText }}
       />
 

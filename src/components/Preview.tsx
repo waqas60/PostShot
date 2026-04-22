@@ -1,6 +1,7 @@
 import TweetComponent, { TweetComponentType } from "./TweetComponent";
 import Customization from "./Customization";
 import { useCustomizationStore } from "@/store/customizationStore";
+import Adjustment from "./Adjustment";
 
 type PreviewProps = {
   post: TweetComponentType;
@@ -26,6 +27,7 @@ export default function Preview({ post }: PreviewProps) {
         )}
 
         {post && <Customization />}
+        {post && <Adjustment />}
       </div>
     </div>
   );
