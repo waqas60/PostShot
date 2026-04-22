@@ -15,7 +15,6 @@ export async function POST(request: Request) {
   }
 
   const raw = tweet as any;
-  const bv = raw.card?.binding_values;
 
   return Response.json({
     avatar: tweet.user.profile_image_url_https,
