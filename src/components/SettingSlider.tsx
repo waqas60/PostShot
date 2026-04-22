@@ -6,6 +6,7 @@ type SettingSliderType = {
   onChange: (v: any) => void;
   min: number;
   max: number;
+  step: number
 };
 
 export default function SettingSlider(s: SettingSliderType) {
@@ -21,7 +22,7 @@ export default function SettingSlider(s: SettingSliderType) {
         value={[s.value]}
         max={s.max}
         min={s.min}
-        step={1}
+        step={s.step}
         onValueChange={(vals) => s.onChange(vals[0])}
       >
         <Slider.Track className="bg-neutral-700 relative grow rounded-full h-0.75">

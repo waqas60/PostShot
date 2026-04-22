@@ -4,8 +4,16 @@ import React from "react";
 import SettingSlider from "./SettingSlider";
 
 export default function Adjustment() {
-  const { fontSize, setFontSize, width, setWidth, roundness, setRoundness } =
-    useCustomizationStore();
+  const {
+    fontSize,
+    setFontSize,
+    width,
+    setWidth,
+    roundness,
+    setRoundness,
+    scale,
+    setScale,
+  } = useCustomizationStore();
 
   return (
     <div className="p-4 space-y-6">
@@ -17,6 +25,7 @@ export default function Adjustment() {
         value={fontSize}
         max={24}
         min={12}
+        step={1}
         onChange={setFontSize}
       />
       <SettingSlider
@@ -24,6 +33,7 @@ export default function Adjustment() {
         value={width}
         max={100}
         min={40}
+        step={1}
         onChange={setWidth}
       />
       <SettingSlider
@@ -31,9 +41,17 @@ export default function Adjustment() {
         value={roundness}
         max={32}
         min={0}
+        step={1}
         onChange={setRoundness}
       />
-      
+      <SettingSlider
+        label="Scale"
+        value={scale}
+        max={1.5}
+        min={0.5}
+        step={0.1}
+        onChange={setScale}
+      />
     </div>
   );
 }

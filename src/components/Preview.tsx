@@ -20,7 +20,7 @@ export default function Preview({ post }: PreviewProps) {
             style={{
               background: background,
             }}
-            className="p-10 rounded-2xl"
+            className="p-10 rounded-2xl overflow-hidden"
           >
             <TweetComponent {...post} />
           </div>
