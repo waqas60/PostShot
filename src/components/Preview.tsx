@@ -11,7 +11,7 @@ export default function Preview({ post }: PreviewProps) {
   const { background } = useCustomizationStore();
 
   return (
-    <div className="">
+    <div className="max-w-200">
       <p className="font-bold border-b pb-2  border-neutral-100">Preview</p>
 
       <div className="flex items-center gap-10 m-10">

@@ -3,7 +3,7 @@ import { Slider } from "radix-ui";
 import React from "react";
 
 export default function Adjustment() {
-  const { fontSize, setFontSize } = useCustomizationStore();
+  const { fontSize, setFontSize, width, setWidth } = useCustomizationStore();
 
   return (
     <div className="p-4 space-y-6">
@@ -34,6 +34,31 @@ export default function Adjustment() {
             className="block w-5 h-5 bg-[#f97316] rounded-[10px] hover:bg-orange-600 focus:outline-none"
             aria-label="Font size"
           />
+        </Slider.Root>
+      </div>
+
+      <div>
+        <div className="flex justify-between items-center">
+          <span className="text-sm font-medium text-neutral-400">Width</span>
+          <span className="text-sm text-neutral-400">{width}%</span>
+        </div>
+
+        <Slider.Root
+          className="relative flex items-center select-none touch-none w-full h-5"
+          value={[width]}
+          max={100}
+          min={40}
+          step={1}
+          onValueChange={(vals) => setWidth(vals[0])}
+        >
+          <Slider.Track className="bg-neutral-700 relative grow rounded-full h-0.75">
+            <Slider.Range className="absolute bg-[#f97316] rounded-full h-full"></Slider.Range>
+          </Slider.Track>
+
+          <Slider.Thumb
+            className="block w-5 h-5 bg-[#f97316] rounded-[10px] hover:bg-orange-600 focus:outline-none"
+            aria-label="Font size"
+          ></Slider.Thumb>
         </Slider.Root>
       </div>
     </div>

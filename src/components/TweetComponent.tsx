@@ -20,7 +20,7 @@ export type TweetComponentType = {
 };
 
 export default function TweetComponent(tweet: TweetComponentType) {
-  const { theme, fontSize } = useCustomizationStore();
+  const { theme, fontSize, width } = useCustomizationStore();
 
   const themeStyle =
     theme === "light"
@@ -35,7 +35,8 @@ export default function TweetComponent(tweet: TweetComponentType) {
 
   return (
     <div
-      className={`z-10 max-w-120 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 rounded-xl ${themeStyle}`}
+      style={{ width: `${width}%` }}
+      className={`z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 overflow-hidden rounded-xl ${themeStyle} mx-auto`}
     >
       <div className="flex gap-2 items-center">
         <Image
@@ -58,7 +59,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
 
       <div
         className="mt-3 leading-relaxed"
-        style={{ fontSize: fontSize ? `${fontSize}px` : "14px" }} 
+        style={{ fontSize: fontSize ? `${fontSize}px` : "14px" }}
         dangerouslySetInnerHTML={{ __html: formattedText }}
       />
 
