@@ -36,7 +36,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
   return (
     <div
       style={{ width: `${width}%`, borderRadius: `${roundness}px` }}
-      className={`z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 overflow-hidden rounded-xl ${themeStyle} mx-auto`}
+      className={`h-full z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 overflow-hidden rounded-xl ${themeStyle} mx-auto`}
     >
       <div className="flex gap-2 items-center">
         <Image

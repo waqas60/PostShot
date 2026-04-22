@@ -39,7 +39,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="flex justify-center gap-4 items-center flex-col">
+    <div className="flex justify-center gap-4 items-center flex-col ">
       <div className="flex justify-center gap-4 items-center">
         <Input ref={inputRef} />
 

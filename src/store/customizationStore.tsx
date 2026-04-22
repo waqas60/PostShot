@@ -11,6 +11,8 @@ type CustomizationStore = {
   setWidth: (w: number) => void;
   roundness: number;
   setRoundness: (r: number) => void;
+  scale: number;
+  setScale: (s: number) => void;
 };
 
 export const useCustomizationStore = create<CustomizationStore>((set) => ({
@@ -24,4 +26,6 @@ export const useCustomizationStore = create<CustomizationStore>((set) => ({
   setWidth: (w) => set({ width: w }),
   roundness: 0,
   setRoundness: (r) => set({ roundness: r }),
+  scale: 0,
+  setScale: (s) => set({ scale: s }),
 }));
