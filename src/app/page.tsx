@@ -1,10 +1,13 @@
 import Hero from "@/components/Hero";
 import ToggleTheme from "@/components/ToggleTheme";
 import { useTheme } from "next-themes";
+import { Toaster, toast } from "sonner";
 
 export default function Home() {
   return (
     <div className="relative">
+      <Toaster />
+
       <h1 className="absolute top-5 left-5 text-sm text-neutral-400">
         POSTSHOT
       </h1>

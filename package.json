@@ -25,6 +25,7 @@
     "react-spinners": "^0.17.0",
     "react-tweet": "^3.3.0",
     "slider": "link:@/components/ui/slider",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.5.0",
     "utils": "link:@/lib/utils",
     "zustand": "^5.0.12"

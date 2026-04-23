@@ -5,6 +5,7 @@ import Adjustment from "./Adjustment";
 import { useCallback, useRef } from "react";
 import { toBlob, toPng } from "html-to-image";
 import { useGradient } from "@/store/gradientStore";
+import { toast } from "sonner";
 
 type PreviewProps = {
   post: TweetComponentType;
@@ -29,14 +30,13 @@ export default function Preview({ post }: PreviewProps) {
       link.href = dataUrl;
       link.click();
     } catch (err) {
-      console.error("Capture failed", err);
+      toast.error("Failed to download image");
     }
   };
 
   const copyImage = async () => {
     if (!ref.current) return;
 
-    // Tiny delay to ensure the DOM has updated
     await new Promise((resolve) => setTimeout(resolve, 50));
 
     try {
@@ -48,11 +48,11 @@ export default function Preview({ post }: PreviewProps) {
       if (blob) {
         const item = new ClipboardItem({ "image/png": blob });
         await navigator.clipboard.write([item]);
-        alert("Image copied to clipboard!");
+        toast.success("Image copied to clipboard!");
       }
     } catch (err) {
-      console.error("Copy failed", err);
-      alert("Failed to copy image. Your browser might not support this.");
+      // console.error("Copy failed", err);
+      toast.error("Failed to copy image");
     }
   };
 
