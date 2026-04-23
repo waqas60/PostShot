@@ -29,8 +29,11 @@ export default function TweetComponent(tweet: TweetComponentType) {
       : "bg-neutral-800 text-white";
 
   const formattedText = tweet.text
-    .replace(/https?:\/\/t\.co\/\S+/g, "")
     .replace(/\n/g, "<br/>")
+    .replace(
+      /(https?:\/\/[^\s]+)/g,
+      `<a href="$1" target="_blank" style="color:#1d9bf0; text-decoration:underline;">$1</a>`,
+    )
     .replace(/@(\w+)/g, `<span style="color:#1d9bf0;">@$1</span>`)
     .trim();
 
@@ -43,7 +46,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
         opacity: `${opacity}`,
         rotate: `${tilt}deg`,
       }}
-      className={` font-tweet overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle} mx-auto`}
+      className={`select:none font-tweet overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle} mx-auto `}
     >
       <div className="flex items-center gap-2">
         <Image
@@ -71,9 +74,16 @@ export default function TweetComponent(tweet: TweetComponentType) {
       />
 
       {tweet.media && tweet.media.length > 0 && (
-        <div className="mt-3 overflow-hidden rounded-xl ">
+        <div className="mt-3 overflow-hidden rounded-xl">
           {tweet.media.map((m, i) => (
-            <Image width={840} height={80} key={i} src={m.url} alt="" className="w-full" />
+            <Image
+              width={840}
+              height={500}
+              key={i}
+              src={m.url}
+              alt=""
+              className="h-auto w-full rounded-lg"
+            />
           ))}
         </div>
       )}

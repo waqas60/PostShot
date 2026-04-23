@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const times = [
   { id: 1, label: "1:1", h: 15, w: 15, wp: 400 },
-  { id: 2, label: "1.9:1", h: 15, w: 25, wp: 800 },
+  { id: 2, label: "1.9:1", h: 15, w: 25, wp: 500 },
   { id: 3, label: "4:5", h: 25, w: 15, wp: 300 },
 ];
 
