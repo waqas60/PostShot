@@ -8,7 +8,7 @@ type PreviewProps = {
 };
 
 export default function Preview({ post }: PreviewProps) {
-  const { background } = useCustomizationStore();
+  const { background, padding } = useCustomizationStore();
 
   return (
     <div className="w-230">
@@ -19,6 +19,7 @@ export default function Preview({ post }: PreviewProps) {
           <div
             style={{
               background: background,
+              padding: `${padding}px`,
             }}
             className="p-10 rounded-2xl overflow-hidden"
           >
