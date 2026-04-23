@@ -4,13 +4,16 @@ import { useCustomizationStore } from "@/store/customizationStore";
 import Adjustment from "./Adjustment";
 import { useCallback, useRef } from "react";
 import { toBlob, toPng } from "html-to-image";
+import { useGradient } from "@/store/gradientStore";
 
 type PreviewProps = {
   post: TweetComponentType;
 };
 
 export default function Preview({ post }: PreviewProps) {
-  const { background, padding, tweetParentWidth } = useCustomizationStore();
+  const { background, padding, tweetParentWidth, solidColor } =
+    useCustomizationStore();
+  const { gradient } = useGradient();
   const ref = useRef<HTMLDivElement>(null);
 
   const downloadImage = async () => {
@@ -31,27 +34,27 @@ export default function Preview({ post }: PreviewProps) {
   };
 
   const copyImage = async () => {
-  if (!ref.current) return;
+    if (!ref.current) return;
 
-  // Tiny delay to ensure the DOM has updated
-  await new Promise((resolve) => setTimeout(resolve, 50));
+    // Tiny delay to ensure the DOM has updated
+    await new Promise((resolve) => setTimeout(resolve, 50));
 
-  try {
-    const blob = await toBlob(ref.current, {
-      cacheBust: true,
-      pixelRatio: 3,
-    });
+    try {
+      const blob = await toBlob(ref.current, {
+        cacheBust: true,
+        pixelRatio: 3,
+      });
 
-    if (blob) {
-      const item = new ClipboardItem({ "image/png": blob });
-      await navigator.clipboard.write([item]);
-      alert("Image copied to clipboard!"); 
+      if (blob) {
+        const item = new ClipboardItem({ "image/png": blob });
+        await navigator.clipboard.write([item]);
+        alert("Image copied to clipboard!");
+      }
+    } catch (err) {
+      console.error("Copy failed", err);
+      alert("Failed to copy image. Your browser might not support this.");
     }
-  } catch (err) {
-    console.error("Copy failed", err);
-    alert("Failed to copy image. Your browser might not support this.");
-  }
-};
+  };
 
   return (
     <div className="mx-auto mt-10 w-200">
@@ -88,7 +91,7 @@ export default function Preview({ post }: PreviewProps) {
                 ref={ref}
                 style={{
                   width: `${tweetParentWidth}px`,
-                  background: background,
+                  background: gradient ? background : solidColor,
                   padding: `${padding}px`,
                 }}
                 className="overflow-hidden rounded-2xl shadow-2xl transition-all duration-200"
