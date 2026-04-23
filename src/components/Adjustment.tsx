@@ -22,7 +22,7 @@ export default function Adjustment() {
   } = useCustomizationStore();
 
   return (
-    <div className="w-86">
+    <div className="w-70">
       <div className="grid grid-cols-2 gap-3">
         <SettingSlider
           label="Font Size"

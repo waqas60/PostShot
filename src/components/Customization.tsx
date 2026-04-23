@@ -8,8 +8,8 @@ export default function Customization() {
   const { option, setOption } = useCustomizeOptionStore();
 
   return (
-    <div className="flex flex-col gap-5">
-      <p className="border-b border-neutral-200 pb-2 text-xs font-semibold">
+    <div className="flex flex-col gap-5 rounded-2xl p-4 shadow-md border-neutral-50 dark:border-neutral-100">
+      <p className="border-b border-neutral-200 pb-2 text-xs font-semibold dark:border-neutral-700">
         Customization
       </p>
       <div className="grid w-full grid-cols-3 justify-between rounded-md bg-neutral-700 p-0.5 text-neutral-500">

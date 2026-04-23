@@ -12,7 +12,7 @@ export default function Preview({ post }: PreviewProps) {
 
   return (
     <div className="mt-10 w-250">
-      <p className="border-b border-neutral-200 pb-2 text-sm font-bold">
+      <p className="border-b border-neutral-200 dark:border-neutral-700 pb-2 text-sm font-bold">
         Preview
       </p>
 

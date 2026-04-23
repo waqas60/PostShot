@@ -30,7 +30,7 @@ export default function RootLayout({
       className={`${unbounded.variable} ${geist.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col selection:bg-neutral-950 selection:text-neutral-50 dark:selection:bg-neutral-50 dark:selection:text-neutral-950">
         <ThemeModeProvider>{children}</ThemeModeProvider>
       </body>
     </html>

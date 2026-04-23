@@ -7,11 +7,13 @@ import TweetComponent, { TweetComponentType } from "./TweetComponent";
 import { BarLoader, BounceLoader } from "react-spinners";
 import Customization from "./Customization";
 import Preview from "./Preview";
+import { useTheme } from "next-themes";
 
 export default function Hero() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [post, setPost] = useState<TweetComponentType>();
   const [loading, setLoading] = useState(false);
+  const { theme } = useTheme();
 
   const fetchPost = async () => {
     if (!inputRef.current) {
@@ -48,7 +50,11 @@ export default function Hero() {
 
       {/* {JSON.stringify(post.user)} */}
 
-      <BarLoader loading={loading} className="mx-auto mt-20" />
+      <BarLoader
+        loading={loading}
+        className="mx-auto mt-20"
+        color={theme === "dark" ? "#fff" : "#000"}
+      />
 
       {post && <Preview post={post} />}
     </div>
