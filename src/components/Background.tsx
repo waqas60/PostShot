@@ -1,3 +1,4 @@
+import { useBackgroundStore, ValueEnum } from "@/store/backgroundStore";
 import { useCustomizationStore } from "@/store/customizationStore";
 import React from "react";
 
@@ -18,6 +19,7 @@ const presets = [
 
 export default function Background() {
   const { setBackground } = useCustomizationStore();
+  const { value, setValue } = useBackgroundStore();
 
   const changeBg = (index: number) => {
     setBackground(presets[index]);
@@ -25,17 +27,30 @@ export default function Background() {
 
   return (
     <div>
-      <h1 className="font-bold border-b pb-2  border-neutral-200">
-        Background
-      </h1>
-      <h2 className="font-bold border-b pb-2  border-neutral-200">Presets</h2>
-      <div className="grid grid-cols-4 gap-2 mt-2">
+      <p className="pb-2 text-xs font-semibold">Background</p>
+      <div className="grid w-full grid-cols-2 rounded-md border-b border-neutral-200 bg-neutral-700 p-0.5 text-center text-[10px] text-neutral-500">
+        <p
+          className={`cursor-pointer rounded-md p-2 transition-all duration-200 ${value === ValueEnum.PRESETS && "bg-neutral-100 text-neutral-800"}`}
+          onClick={() => setValue(ValueEnum.PRESETS)}
+        >
+          Presets
+        </p>
+        <p
+          className={`cursor-pointer rounded-md p-2 transition-all duration-200 ${value === ValueEnum.SOLID_COLORS && "bg-neutral-100 text-neutral-800"}`}
+          onClick={() => setValue(ValueEnum.SOLID_COLORS)}
+        >
+          Solid Colors
+        </p>
+        {/* <p className="m-0.5 rounded-2xl bg-neutral-50 p-1">Solid Colors</p> */}
+      </div>
+
+      <div className="mt-2 grid grid-cols-4 gap-2">
         {presets.map((preset, index) => (
           <button
             key={index}
             style={{ background: preset }}
             onClick={() => changeBg(index)}
-            className="w-20 h-8 rounded-md "
+            className="h-8 w-20 cursor-pointer rounded-md"
           ></button>
         ))}
       </div>

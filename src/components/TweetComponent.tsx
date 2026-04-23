@@ -41,11 +41,11 @@ export default function TweetComponent(tweet: TweetComponentType) {
         borderRadius: `${roundness}px`,
         scale: `${scale}`,
         opacity: `${opacity}`,
-        rotate: `${tilt}deg`
+        rotate: `${tilt}deg`,
       }}
-      className={`shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 overflow-hidden  ${themeStyle} mx-auto`}
+      className={`max-h-full font-tweet overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle} mx-auto`}
     >
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <Image
           width={40}
           height={40}
@@ -54,10 +54,10 @@ export default function TweetComponent(tweet: TweetComponentType) {
           className="rounded-full"
         />
         <div>
-          <p className="text-sm font-semibold flex items-center gap-1">
+          <p className="flex items-center gap-1 text-sm font-semibold">
             {tweet.name}
             {tweet.verified && (
-              <RiVerifiedBadgeFill className="text-[#1d9bf0] text-sm" />
+              <RiVerifiedBadgeFill className="text-sm text-[#1d9bf0]" />
             )}
           </p>
           <p className="text-xs text-[#536471]">@{tweet.username}</p>
@@ -71,14 +71,14 @@ export default function TweetComponent(tweet: TweetComponentType) {
       />
 
       {tweet.media && tweet.media.length > 0 && (
-        <div className="mt-3 rounded-xl overflow-hidden border border-[#00000014]">
+        <div className="mt-3 overflow-hidden rounded-xl ">
           {tweet.media.map((m, i) => (
-            <img key={i} src={m.url} alt="" className="w-full object-cover" />
+            <Image width={840} height={80} key={i} src={m.url} alt="" className="w-full" />
           ))}
         </div>
       )}
 
-      <p className="text-xs text-[#536471] border-y border-[#00000014] my-4 py-2">
+      <p className="my-4 border-y border-[#00000014] py-2 text-xs text-[#536471]">
         {new Date(tweet.date).toLocaleString("en-US", {
           hour: "numeric",
           minute: "2-digit",
@@ -89,7 +89,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
         })}
       </p>
 
-      <div className="flex gap-4 items-center text-xs text-[#536471]">
+      <div className="flex items-center gap-4 text-xs text-[#536471]">
         <p className="flex items-center gap-1">
           <AiOutlineHeart className="text-base" />
           {tweet.likes}

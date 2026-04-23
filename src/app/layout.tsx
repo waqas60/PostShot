@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { Unbounded } from "next/font/google";
+import { Source_Code_Pro, Unbounded, Geist_Mono,Geist } from "next/font/google";
 import "./globals.css";
+
+const geist = Geist({
+  variable: "--font-geist",
+  subsets: ["latin"],
+});
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -18,8 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${unbounded.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html
+      lang="en"
+      className={`${unbounded.variable} ${geist.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );
 }
