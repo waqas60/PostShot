@@ -20,7 +20,7 @@ export type TweetComponentType = {
 };
 
 export default function TweetComponent(tweet: TweetComponentType) {
-  const { theme, fontSize, width, roundness, scale } = useCustomizationStore();
+  const { theme, fontSize, width, roundness, scale, opacity } = useCustomizationStore();
 
   const themeStyle =
     theme === "light"
@@ -39,6 +39,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
         width: `${width}%`,
         borderRadius: `${roundness}px`,
         scale: `${scale}`,
+        opacity: `${opacity}`
       }}
       className={`h-full z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 overflow-hidden rounded-xl ${themeStyle} mx-auto`}
     >

@@ -13,6 +13,8 @@ export default function Adjustment() {
     setRoundness,
     scale,
     setScale,
+    opacity,
+    setOpacity,
   } = useCustomizationStore();
 
   return (
@@ -51,6 +53,14 @@ export default function Adjustment() {
         min={0.5}
         step={0.1}
         onChange={setScale}
+      />
+      <SettingSlider
+        label="Opacity"
+        value={opacity}
+        max={1.0}
+        min={0.0}
+        step={0.1}
+        onChange={setOpacity}
       />
     </div>
   );
