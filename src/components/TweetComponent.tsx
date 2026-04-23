@@ -46,7 +46,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
         opacity: `${opacity}`,
         rotate: `${tilt}deg`,
       }}
-      className={`select:none font-tweet overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle} mx-auto `}
+      className={`select:none font-tweet overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle}  `}
     >
       <div className="flex items-center gap-2">
         <Image

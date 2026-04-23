@@ -18,7 +18,7 @@ export default function RatioSelector() {
   }
 
   return (
-    <div className="w-70 rounded-2xl">
+    <div className=" rounded-2xl">
       <div className="grid grid-cols-3 gap-2">
         {times.map((item) => (
           <button

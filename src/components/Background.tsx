@@ -29,7 +29,7 @@ export default function Background() {
   };
 
   return (
-    <div className="w-70">
+    <div className="">
       <div className="grid w-full grid-cols-2 rounded-md  bg-neutral-700 p-0.5 text-center text-[10px] text-neutral-500">
         <p
           className={`cursor-pointer rounded-md p-2 transition-all duration-200 ${value === ValueEnum.PRESETS && "bg-neutral-100 text-neutral-800"}`}
@@ -51,7 +51,7 @@ export default function Background() {
             key={index}
             style={{ background: preset }}
             onClick={() => changeBg(index)}
-            className="h-8 w-16 cursor-pointer rounded-md"
+            className="h-8  cursor-pointer rounded-md"
           >
             {selected === index && (
               <TiTick className="mx-auto text-center text-white" />
