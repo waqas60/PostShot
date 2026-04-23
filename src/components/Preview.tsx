@@ -8,22 +8,23 @@ type PreviewProps = {
 };
 
 export default function Preview({ post }: PreviewProps) {
-  const { background, padding } = useCustomizationStore();
+  const { background, padding, tweetParentWidth } = useCustomizationStore();
 
   return (
     <div className="mt-10 w-250">
-      <p className="border-b border-neutral-200 dark:border-neutral-700 pb-2 text-sm font-bold">
+      <p className="border-b border-neutral-200 pb-2 text-sm font-bold dark:border-neutral-700">
         Preview
       </p>
 
-      <div className="m-10 flex  gap-20 justify-center">
+      <div className="m-10 flex justify-center gap-20 ">
         {post && (
           <div
             style={{
+              width: `${tweetParentWidth}px`,
               background: background,
               padding: `${padding}px`,
             }}
-            className="w-120 overflow-hidden rounded-2xl"
+            className="overflow-hidden rounded-2xl"
           >
             <TweetComponent {...post} />
           </div>

@@ -3,12 +3,13 @@ import Background from "./Background";
 import Theme from "./Theme";
 import { OPTION_ENUM, useCustomizeOptionStore } from "@/store/customizeOption";
 import Adjustment from "./Adjustment";
+import RatioSelector from "./RatioSelector";
 
 export default function Customization() {
   const { option, setOption } = useCustomizeOptionStore();
 
   return (
-    <div className="flex flex-col gap-5 rounded-2xl p-4 shadow-md border-neutral-50 dark:border-neutral-100">
+    <div className="flex flex-col gap-5 rounded-2xl border-neutral-50 p-4 shadow-md dark:border-neutral-100">
       <p className="border-b border-neutral-200 pb-2 text-xs font-semibold dark:border-neutral-700">
         Customization
       </p>
@@ -41,6 +42,11 @@ export default function Customization() {
       {option === OPTION_ENUM.Adjustment && (
         <>
           <Adjustment />
+        </>
+      )}
+      {option === OPTION_ENUM.Export && (
+        <>
+          <RatioSelector />
         </>
       )}
     </div>

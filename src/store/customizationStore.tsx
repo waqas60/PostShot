@@ -19,6 +19,8 @@ type CustomizationStore = {
   setPadding: (p: number) => void;
   tilt: number;
   setTilt: (t: number) => void;
+  tweetParentWidth: number;
+  setTweetParentWidth: (w: number) => void;
 };
 
 export const useCustomizationStore = create<CustomizationStore>((set) => ({
@@ -41,4 +43,6 @@ export const useCustomizationStore = create<CustomizationStore>((set) => ({
   setPadding: (p) => set({ padding: p }),
   tilt: 0,
   setTilt: (t) => set({ tilt: t }),
+  tweetParentWidth: 400,
+  setTweetParentWidth: (w) => set({ tweetParentWidth: w }),
 }));
