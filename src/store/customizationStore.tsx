@@ -17,6 +17,8 @@ type CustomizationStore = {
   setOpacity: (o: number) => void;
   padding: number;
   setPadding: (p: number) => void;
+  tilt: number;
+  setTilt: (t: number) => void;
 };
 
 export const useCustomizationStore = create<CustomizationStore>((set) => ({
@@ -36,4 +38,6 @@ export const useCustomizationStore = create<CustomizationStore>((set) => ({
   setOpacity: (o) => set({ opacity: o }),
   padding: 16,
   setPadding: (p) => set({ padding: p }),
+  tilt: 0,
+  setTilt: (t) => set({ tilt: t }),
 }));

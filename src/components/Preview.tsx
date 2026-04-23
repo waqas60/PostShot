@@ -11,17 +11,17 @@ export default function Preview({ post }: PreviewProps) {
   const { background, padding } = useCustomizationStore();
 
   return (
-    <div className="w-230">
-      <p className="font-bold border-b pb-2  border-neutral-100">Preview</p>
+    <div className="w-250 mt-20">
+      <p className="font-bold border-b pb-2 border-neutral-200 text-sm">Preview</p>
 
-      <div className="flex items-center gap-10 m-10">
+      <div className="flex items-center gap-5 m-10">
         {post && (
           <div
             style={{
               background: background,
               padding: `${padding}px`,
             }}
-            className="p-10 rounded-2xl overflow-hidden"
+            className="rounded-2xl overflow-hidden"
           >
             <TweetComponent {...post} />
           </div>

@@ -39,8 +39,8 @@ export default function Hero() {
   };
 
   return (
-    <div className="flex justify-center gap-4 items-center flex-col ">
-      <div className="flex justify-center gap-4 items-center">
+    <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex w-[40%] items-center justify-center gap-2">
         <Input ref={inputRef} />
 
         <Button onclick={fetchPost} />
@@ -48,7 +48,7 @@ export default function Hero() {
 
       {/* {JSON.stringify(post.user)} */}
 
-      <BarLoader loading={loading} className="mx-auto mt-20 " />
+      <BarLoader loading={loading} className="mx-auto mt-20" />
 
       {post && <Preview post={post} />}
     </div>

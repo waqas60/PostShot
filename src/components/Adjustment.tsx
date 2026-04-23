@@ -17,6 +17,8 @@ export default function Adjustment() {
     setOpacity,
     padding,
     setPadding,
+    tilt,
+    setTilt,
   } = useCustomizationStore();
 
   return (
@@ -71,6 +73,14 @@ export default function Adjustment() {
         min={16}
         step={1}
         onChange={setPadding}
+      />
+      <SettingSlider
+        label="Tilt"
+        value={tilt}
+        max={12}
+        min={-12}
+        step={1}
+        onChange={setTilt}
       />
     </div>
   );

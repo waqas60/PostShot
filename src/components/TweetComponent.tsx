@@ -20,7 +20,7 @@ export type TweetComponentType = {
 };
 
 export default function TweetComponent(tweet: TweetComponentType) {
-  const { theme, fontSize, width, roundness, scale, opacity } =
+  const { theme, fontSize, width, roundness, scale, opacity, tilt } =
     useCustomizationStore();
 
   const themeStyle =
@@ -41,8 +41,9 @@ export default function TweetComponent(tweet: TweetComponentType) {
         borderRadius: `${roundness}px`,
         scale: `${scale}`,
         opacity: `${opacity}`,
+        rotate: `${tilt}deg`
       }}
-      className={`h-full z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 overflow-hidden rounded-xl ${themeStyle} mx-auto`}
+      className={`shadow-[0_8px_30px_rgb(0,0,0,0.12)] pt-5 px-6 pb-6 overflow-hidden  ${themeStyle} mx-auto`}
     >
       <div className="flex gap-2 items-center">
         <Image

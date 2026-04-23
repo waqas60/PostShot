@@ -14,7 +14,7 @@ export default function SettingSlider(s: SettingSliderType) {
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <span className="text-sm font-medium text-neutral-400">{s.label}</span>
-        <span className="text-sm text-neutral-400">{s.value}px</span>
+        <span className="text-sm text-neutral-400">{s.value}</span>
       </div>
 
       <Slider.Root
