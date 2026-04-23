@@ -26,8 +26,7 @@ export default function Background() {
   };
 
   return (
-    <div>
-      <p className="pb-2 text-xs font-semibold">Background</p>
+    <div className="">
       <div className="grid w-full grid-cols-2 rounded-md border-b border-neutral-200 bg-neutral-700 p-0.5 text-center text-[10px] text-neutral-500">
         <p
           className={`cursor-pointer rounded-md p-2 transition-all duration-200 ${value === ValueEnum.PRESETS && "bg-neutral-100 text-neutral-800"}`}

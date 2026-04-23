@@ -22,42 +22,43 @@ export default function Adjustment() {
   } = useCustomizationStore();
 
   return (
-    <div className="p-4 space-y-6">
-      <h1 className="font-bold border-b pb-2 border-neutral-200 text-white">
-        Adjustment
-      </h1>
-      <SettingSlider
-        label="Font Size"
-        value={fontSize}
-        max={24}
-        min={12}
-        step={1}
-        onChange={setFontSize}
-      />
-      <SettingSlider
-        label="Width"
-        value={width}
-        max={100}
-        min={40}
-        step={1}
-        onChange={setWidth}
-      />
-      <SettingSlider
-        label="Roundness"
-        value={roundness}
-        max={32}
-        min={0}
-        step={1}
-        onChange={setRoundness}
-      />
-      <SettingSlider
-        label="Scale"
-        value={scale}
-        max={1.5}
-        min={0.5}
-        step={0.1}
-        onChange={setScale}
-      />
+    <div className="w-86">
+      <div className="grid grid-cols-2 gap-3">
+        <SettingSlider
+          label="Font Size"
+          value={fontSize}
+          max={24}
+          min={12}
+          step={1}
+          onChange={setFontSize}
+        />
+        <SettingSlider
+          label="Width"
+          value={width}
+          max={100}
+          min={40}
+          step={1}
+          onChange={setWidth}
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <SettingSlider
+          label="Roundness"
+          value={roundness}
+          max={32}
+          min={0}
+          step={1}
+          onChange={setRoundness}
+        />
+        <SettingSlider
+          label="Scale"
+          value={scale}
+          max={1.5}
+          min={0.5}
+          step={0.1}
+          onChange={setScale}
+        />
+      </div>
       <SettingSlider
         label="Opacity"
         value={opacity}
