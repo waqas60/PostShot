@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Source_Code_Pro, Unbounded, Geist_Mono,Geist } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import { Unbounded, Geist } from "next/font/google";
 import "./globals.css";
+import ThemeModeProvider from "@/components/ThemeModeProvider";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -26,8 +28,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${unbounded.variable} ${geist.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <ThemeModeProvider>{children}</ThemeModeProvider>
+      </body>
     </html>
   );
 }
