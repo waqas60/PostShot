@@ -15,6 +15,8 @@ export default function Adjustment() {
     setScale,
     opacity,
     setOpacity,
+    padding,
+    setPadding,
   } = useCustomizationStore();
 
   return (
@@ -61,6 +63,14 @@ export default function Adjustment() {
         min={0.0}
         step={0.1}
         onChange={setOpacity}
+      />
+      <SettingSlider
+        label="Padding"
+        value={padding}
+        max={96}
+        min={16}
+        step={1}
+        onChange={setPadding}
       />
     </div>
   );

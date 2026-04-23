@@ -15,8 +15,8 @@ type CustomizationStore = {
   setScale: (s: number) => void;
   opacity: number;
   setOpacity: (o: number) => void;
-  // padding: number;
-  // setPadding: (p: number) => void;
+  padding: number;
+  setPadding: (p: number) => void;
 };
 
 export const useCustomizationStore = create<CustomizationStore>((set) => ({
@@ -34,6 +34,6 @@ export const useCustomizationStore = create<CustomizationStore>((set) => ({
   setScale: (s) => set({ scale: s }),
   opacity: 1,
   setOpacity: (o) => set({ opacity: o }),
-  // padding: 16,
-  // setPadding: (p) => set({ padding: p }),
+  padding: 16,
+  setPadding: (p) => set({ padding: p }),
 }));
