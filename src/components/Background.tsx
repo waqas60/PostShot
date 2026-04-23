@@ -1,6 +1,7 @@
 import { useBackgroundStore, ValueEnum } from "@/store/backgroundStore";
 import { useCustomizationStore } from "@/store/customizationStore";
-import React from "react";
+import { SetStateAction, useState } from "react";
+import { TiTick } from "react-icons/ti";
 
 const presets = [
   "linear-gradient(135deg, rgb(13, 0, 26) 0%, rgb(109, 0, 181) 40%, rgb(192, 0, 106) 70%, rgb(255, 78, 80) 100%)",
@@ -20,9 +21,11 @@ const presets = [
 export default function Background() {
   const { setBackground } = useCustomizationStore();
   const { value, setValue } = useBackgroundStore();
+  const [selected, setSelected] = useState<SetStateAction<number>>(0);
 
   const changeBg = (index: number) => {
     setBackground(presets[index]);
+    setSelected(index);
   };
 
   return (
@@ -40,7 +43,6 @@ export default function Background() {
         >
           Solid Colors
         </p>
-        {/* <p className="m-0.5 rounded-2xl bg-neutral-50 p-1">Solid Colors</p> */}
       </div>
 
       <div className="mt-2 grid grid-cols-4 gap-2">
@@ -50,7 +52,11 @@ export default function Background() {
             style={{ background: preset }}
             onClick={() => changeBg(index)}
             className="h-8 w-20 cursor-pointer rounded-md"
-          ></button>
+          >
+            {selected === index && (
+              <TiTick className="mx-auto text-center text-white" />
+            )}
+          </button>
         ))}
       </div>
     </div>

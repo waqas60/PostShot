@@ -22,7 +22,8 @@ type CustomizationStore = {
 };
 
 export const useCustomizationStore = create<CustomizationStore>((set) => ({
-  background: "",
+  background:
+    "linear-gradient(135deg, rgb(13, 0, 26) 0%, rgb(109, 0, 181) 40%, rgb(192, 0, 106) 70%, rgb(255, 78, 80) 100%)",
   setBackground: (bg) => set({ background: bg }),
   theme: "light",
   setTheme: (th) => set({ theme: th }),
