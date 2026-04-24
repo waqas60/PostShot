@@ -1,5 +1,4 @@
 import { useCustomizationStore } from "@/store/customizationStore";
-import React from "react";
 
 export default function Theme() {
   const { theme, setTheme } = useCustomizationStore();

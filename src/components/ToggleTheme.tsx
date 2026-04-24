@@ -1,21 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
 import { FiMoon } from "react-icons/fi";
 import { IoSunnyOutline } from "react-icons/io5";
 import { useTheme } from "next-themes";
 
 export default function ToggleTheme() {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Wait until mounted on client to prevent hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <div className="absolute top-5 right-5 size-6" />; // Placeholder
-  }
 
   function handleToggleTheme() {
     const currentTheme = theme === "system" ? resolvedTheme : theme;

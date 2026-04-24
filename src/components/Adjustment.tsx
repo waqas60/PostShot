@@ -1,6 +1,4 @@
 import { useCustomizationStore } from "@/store/customizationStore";
-import { Slider } from "radix-ui";
-import React from "react";
 import SettingSlider from "./SettingSlider";
 
 export default function Adjustment() {

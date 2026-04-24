@@ -1,4 +1,3 @@
-import React from "react";
 import Background from "./Background";
 import Theme from "./Theme";
 import { OPTION_ENUM, useCustomizeOptionStore } from "@/store/customizeOption";
