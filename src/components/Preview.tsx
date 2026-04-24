@@ -57,7 +57,7 @@ export default function Preview({ post }: PreviewProps) {
   };
 
   return (
-    <div className="mx-auto mt-10 w-200">
+    <div className="mx-auto mt-10 w-250 ">
       <p className="border-b border-neutral-200 pb-2 text-sm font-bold dark:border-neutral-700">
         Preview
       </p>
@@ -94,7 +94,7 @@ export default function Preview({ post }: PreviewProps) {
                   background: gradient ? background : solidColor,
                   padding: `${padding}px`,
                 }}
-                className="overflow-hidden rounded-2xl shadow-2xl transition-all duration-200"
+                className="overflow-hidden rounded-2xl transition-all duration-200"
               >
                 <TweetComponent {...post} />
               </div>

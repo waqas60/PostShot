@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
 
   return Response.json({
-    url, // tweet link
+    url, 
 
     avatar: tweet.user.profile_image_url_https,
     name: tweet.user.name,
@@ -35,7 +35,6 @@ export async function POST(request: Request) {
         url: m.media_url_https,
       })) ?? [],
 
-    // 👇 ADD THIS (IMPORTANT)
     links:
       tweet.entities?.urls?.map((u: any) => ({
         url: u.url,

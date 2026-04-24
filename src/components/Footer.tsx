@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="mx-8 mb-8 flex justify-between border-t border-neutral-300 pt-4">
+    <div className="mx-8 mb-8 flex justify-between border-t border-neutral-300 dark:border-neutral-700 pt-4">
       <h1 className="text-sm text-neutral-400">POSTSHOT</h1>
 
       <div className="flex items-center gap-2 text-[8px] text-neutral-800 dark:text-neutral-50">

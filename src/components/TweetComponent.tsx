@@ -5,6 +5,8 @@ import { BiMessage } from "react-icons/bi";
 import { FaRetweet } from "react-icons/fa6";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { useCustomizationStore } from "@/store/customizationStore";
+import Link from "next/link";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 export type TweetComponentType = {
   avatar: string;
@@ -16,6 +18,7 @@ export type TweetComponentType = {
   likes: number;
   replies: number;
   retweets: number;
+  url: string;
   media?: { url: string }[];
 };
 
@@ -46,25 +49,31 @@ export default function TweetComponent(tweet: TweetComponentType) {
         opacity: `${opacity}`,
         rotate: `${tilt}deg`,
       }}
-      className={`select:none font-tweet pointer-events-none overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle} `}
+      className={`selection:none font-tweet overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle} `}
     >
-      <div className="flex items-center gap-2">
-        <Image
-          width={40}
-          height={40}
-          alt={tweet.name}
-          src={tweet.avatar}
-          className="rounded-full"
-        />
-        <div>
-          <p className="flex items-center gap-1 text-sm font-semibold">
-            {tweet.name}
-            {tweet.verified && (
-              <RiVerifiedBadgeFill className="text-sm text-[#1d9bf0]" />
-            )}
-          </p>
-          <p className="text-xs text-[#536471]">@{tweet.username}</p>
+      <div className="flex justify-between">
+        <div className="flex items-center gap-2">
+          <Image
+            width={40}
+            height={40}
+            alt={tweet.name}
+            src={tweet.avatar}
+            className="rounded-full"
+          />
+          <div>
+            <p className="flex items-center gap-1 text-sm font-semibold">
+              {tweet.name}
+              {tweet.verified && (
+                <RiVerifiedBadgeFill className="text-sm text-[#1d9bf0]" />
+              )}
+            </p>
+            <p className="text-xs text-[#536471]">@{tweet.username}</p>
+          </div>
         </div>
+
+        <Link href={tweet.url} target="_blank">
+          <FaSquareXTwitter size={20} />
+        </Link>
       </div>
 
       <div
