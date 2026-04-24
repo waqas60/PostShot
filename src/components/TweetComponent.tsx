@@ -32,7 +32,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
     .replace(/\n/g, "<br/>")
     .replace(
       /(https?:\/\/[^\s]+)/g,
-      `<a href="$1" target="_blank" style="color:#1d9bf0; text-decoration:underline;">$1</a>`,
+      `<a href="$1" target="_blank" style="color:#1d9bf0; text-decoration:underline;">Show more</a>`,
     )
     .replace(/@(\w+)/g, `<span style="color:#1d9bf0;">@$1</span>`)
     .trim();

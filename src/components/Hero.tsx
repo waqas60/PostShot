@@ -8,6 +8,7 @@ import { BarLoader, BounceLoader } from "react-spinners";
 import Customization from "./Customization";
 import Preview from "./Preview";
 import { useTheme } from "next-themes";
+import HowItWorks from "./HowItWorks";
 
 export default function Hero() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -57,6 +58,8 @@ export default function Hero() {
       />
 
       {post && <Preview post={post} />}
+
+      {!post && <HowItWorks />}
     </div>
   );
 }

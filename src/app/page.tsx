@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ToggleTheme from "@/components/ToggleTheme";
 import { useTheme } from "next-themes";
@@ -27,6 +28,7 @@ export default function Home() {
 
         <Hero />
 
+        <Footer />
       </div>
     </div>
   );
