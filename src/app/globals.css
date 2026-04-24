@@ -5,14 +5,15 @@
   --foreground: #171717;
 }
 
-/* @custom-variant dark (&:where(.dark, .dark *)); */
+.dark {
+  --background: #171717;
+  --foreground: #ffffff;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --font-tweet: var(--font-geist);
-}
-.dark {
-  --background: var(--color-neutral-900);
-  --foreground: var(--color-neutral-50);
 }
 
 body {

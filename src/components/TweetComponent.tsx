@@ -46,7 +46,7 @@ export default function TweetComponent(tweet: TweetComponentType) {
         opacity: `${opacity}`,
         rotate: `${tilt}deg`,
       }}
-      className={`select:none font-tweet overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle}  `}
+      className={`select:none font-tweet pointer-events-none overflow-hidden px-6 pt-5 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ${themeStyle} `}
     >
       <div className="flex items-center gap-2">
         <Image
@@ -108,10 +108,12 @@ export default function TweetComponent(tweet: TweetComponentType) {
           <BiMessage className="text-base" />
           {tweet.replies}
         </p>
-        <p className="flex items-center gap-1">
-          <FaRetweet className="text-base" />
-          {tweet.retweets}
-        </p>
+        {tweet.retweets && (
+          <p className="flex items-center gap-1">
+            <FaRetweet className="text-base" />
+            {tweet.retweets}
+          </p>
+        )}
       </div>
     </div>
   );

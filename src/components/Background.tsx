@@ -33,15 +33,15 @@ export default function Background() {
 
   return (
     <div className="">
-      <div className="grid w-full grid-cols-2 rounded-md bg-neutral-700 p-0.5 text-center text-[10px] text-neutral-500">
+      <div className="grid w-full grid-cols-2 rounded-md bg-neutral-200 p-0.5 text-center text-[10px] text-neutral-500 dark:bg-neutral-700">
         <p
-          className={`cursor-pointer rounded-md p-2 transition-all duration-200 ${value === ValueEnum.PRESETS && "bg-neutral-100 text-neutral-800"}`}
+          className={`cursor-pointer rounded-md p-2 transition-all duration-200 ${value === ValueEnum.PRESETS && "bg-neutral-50 text-neutral-800"}`}
           onClick={() => setValue(ValueEnum.PRESETS)}
         >
           Presets
         </p>
         <p
-          className={`cursor-pointer rounded-md p-2 transition-all duration-200 ${value === ValueEnum.SOLID_COLORS && "bg-neutral-100 text-neutral-800"}`}
+          className={`cursor-pointer rounded-md p-2 transition-all duration-200 ${value === ValueEnum.SOLID_COLORS && "bg-neutral-50 text-neutral-800"}`}
           onClick={() => setValue(ValueEnum.SOLID_COLORS)}
         >
           Solid Colors
@@ -66,7 +66,7 @@ export default function Background() {
       )}
 
       {value === ValueEnum.SOLID_COLORS && (
-        <div className="flex text-xs items-center">
+        <div className="mt-2 flex items-center text-[10px]">
           <input
             type="color"
             onChange={(e) => {

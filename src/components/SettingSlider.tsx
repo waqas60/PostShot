@@ -25,7 +25,7 @@ export default function SettingSlider(s: SettingSliderType) {
         step={s.step}
         onValueChange={(vals) => s.onChange(vals[0])}
       >
-        <Slider.Track className="relative h-0.5 grow rounded-full bg-neutral-700">
+        <Slider.Track className="relative h-0.5 grow rounded-full bg-neutral-300">
           <Slider.Range className="absolute h-full rounded-full bg-[#f97316]" />
         </Slider.Track>
         <Slider.Thumb

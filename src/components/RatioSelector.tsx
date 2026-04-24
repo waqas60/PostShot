@@ -19,12 +19,12 @@ export default function RatioSelector() {
 
   return (
     <div className=" rounded-2xl">
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-3 gap-3">
         {times.map((item) => (
           <button
             key={item.id}
             onClick={() => ratioSelect(item.id, item.wp)}
-            className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border p-2 transition-all duration-200 ${
+            className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border py-2 transition-all duration-200 ${
               selected === item.id ? "border-orange-400" : "border-neutral-700"
             } `}
           >
