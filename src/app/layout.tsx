@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "next-themes";
 import { Unbounded, Geist } from "next/font/google";
 import "./globals.css";
 import ThemeModeProvider from "@/components/ThemeModeProvider";
@@ -17,6 +16,9 @@ const unbounded = Unbounded({
 export const metadata: Metadata = {
   title: "PostShot | Generate Stunning Image",
   description: "Turn any tweet into a stunning image.",
+  icons: {
+    icon: "/postshot.png",
+  },
 };
 
 export default function RootLayout({
