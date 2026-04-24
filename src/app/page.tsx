@@ -16,15 +16,14 @@ export default function Home() {
 
       <div className="mx-auto mt-20 flex max-w-5xl flex-col gap-10 md:mt-32">
         <div className="flex flex-col items-center gap-6 text-center">
-          <h1 className="max-w-3xl text-4xl leading-tight font-bold tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="max-w-5xl text-4xl leading-tight font-bold tracking-tight sm:text-5xl md:text-7xl">
             Turn any tweet into
             <br />
-            <span className="text-orange-400">a stunning image</span>
+            <span className="text-orange-400">a professional visual</span>
           </h1>
 
           <p className="w-full max-w-md text-sm tracking-wide text-neutral-500 sm:text-base">
-            Beautiful screenshots from any public tweet for LinkedIn, Instagram,
-            and everywhere
+            Transform tweets into high-image captures optimized for whole web
           </p>
         </div>
 
