@@ -6,7 +6,7 @@ export default function Button(button: ButtonType) {
   return (
     <button
       onClick={() => button.onclick()}
-      className="text-sm bg-neutral-800 cursor-pointer hover:bg-neutral-600 duration-200 transition-all text-white p-2.5 rounded-md"
+      className="w-full cursor-pointer rounded-md bg-neutral-800 p-2.5 text-sm text-white transition-all duration-200 hover:bg-neutral-600 sm:w-auto sm:px-6"
     >
       Generate
     </button>

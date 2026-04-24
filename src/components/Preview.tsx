@@ -1,8 +1,7 @@
 import TweetComponent, { TweetComponentType } from "./TweetComponent";
 import Customization from "./Customization";
 import { useCustomizationStore } from "@/store/customizationStore";
-import Adjustment from "./Adjustment";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { toBlob, toPng } from "html-to-image";
 import { useGradient } from "@/store/gradientStore";
 import { toast } from "sonner";
@@ -36,9 +35,7 @@ export default function Preview({ post }: PreviewProps) {
 
   const copyImage = async () => {
     if (!ref.current) return;
-
     await new Promise((resolve) => setTimeout(resolve, 50));
-
     try {
       const blob = await toBlob(ref.current, {
         cacheBust: true,
@@ -51,52 +48,55 @@ export default function Preview({ post }: PreviewProps) {
         toast.success("Image copied to clipboard!");
       }
     } catch (err) {
-      // console.error("Copy failed", err);
       toast.error("Failed to copy image");
     }
   };
 
   return (
-    <div className="mx-auto mt-10 w-250 ">
+    <div className="mx-auto mt-10 w-full max-w-6xl px-4">
       <p className="border-b border-neutral-200 pb-2 text-sm font-bold dark:border-neutral-700">
         Preview
       </p>
 
-      <div className="m-7 grid grid-cols-[400px_1fr] gap-10">
-        <div>
+      <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[380px_1fr]">
+        <div className="flex flex-col gap-8">
           {post && (
-            <div className="w-100">
+            <div className="w-full">
               <Customization />
             </div>
           )}
-          <div className="mt-10 flex justify-center gap-5">
+
+          <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             <button
               onClick={downloadImage}
-              className="cursor-pointer rounded-lg bg-[#f97316] px-6 py-2 text-xs font-bold text-white transition-all duration-200 hover:bg-orange-500"
+              className="flex-1 cursor-pointer rounded-lg bg-[#f97316] px-6 py-3 text-xs font-bold text-white transition-all duration-200 hover:bg-orange-500 sm:flex-none"
             >
               Download PNG
             </button>
             <button
               onClick={copyImage}
-              className="cursor-pointer rounded-lg bg-neutral-700 px-6 py-2 text-center text-xs font-bold text-white transition-all duration-200 hover:bg-neutral-800"
+              className="flex-1 cursor-pointer rounded-lg bg-neutral-700 px-6 py-3 text-center text-xs font-bold text-white transition-all duration-200 hover:bg-neutral-800 sm:flex-none"
             >
               Copy PNG
             </button>
           </div>
         </div>
+
         {post && (
-          <div className="flex flex-col items-center">
-            <div className="max-w-full overflow-auto p-4">
-              <div
-                ref={ref}
-                style={{
-                  width: `${tweetParentWidth}px`,
-                  background: gradient ? background : solidColor,
-                  padding: `${padding}px`,
-                }}
-                className="overflow-hidden rounded-2xl transition-all duration-200"
-              >
-                <TweetComponent {...post} />
+          <div className="flex w-full flex-col items-center justify-start overflow-hidden">
+            <div className="w-full overflow-x-auto pb-4">
+              <div className="flex min-w-max justify-center p-2">
+                <div
+                  ref={ref}
+                  style={{
+                    width: `${tweetParentWidth}px`,
+                    background: gradient ? background : solidColor,
+                    padding: `${padding}px`,
+                  }}
+                  className="overflow-hidden rounded-2xl shadow-xl transition-all duration-200"
+                >
+                  <TweetComponent {...post} />
+                </div>
               </div>
             </div>
           </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 const works = [
   {
     id: 1,
@@ -21,17 +19,23 @@ const works = [
 
 export default function HowItWorks() {
   return (
-    <div className="my-10 flex w-150 flex-col items-center justify-center">
-      <h1 className="text-neutral-500">HOW IT WORKS</h1>
-      <div className="mx-auto mt-10 flex items-center justify-center gap-5">
+    <div className="my-10 flex  max-w-5xl flex-col items-center justify-center px-4">
+      <h1 className="text-sm font-semibold tracking-widest text-neutral-500">
+        HOW IT WORKS
+      </h1>
+      <div className="mt-10 flex flex-col items-stretch justify-center gap-5 md:flex-row">
         {works.map((work) => (
           <div
             key={work.id}
-            className="max-w-50 space-y-1 rounded-2xl border border-neutral-400 bg-neutral-300 p-5 text-xs text-neutral-950 duration-200 hover:border-orange-500 dark:border-neutral-700 dark:bg-neutral-800"
+            className="flex flex-1 flex-col space-y-2 rounded-2xl border border-neutral-400 bg-neutral-200 p-6 text-neutral-950 duration-200 hover:border-orange-500 dark:border-neutral-700 dark:bg-neutral-800"
           >
-            <h1 className="text-2xl text-orange-400">{work.id}</h1>
-            <h2 className="text-neutral-600">{work.title}</h2>
-            <p className="text-[10px] text-neutral-500">{work.description}</p>
+            <h1 className="text-3xl font-bold text-orange-400">{work.id}</h1>
+            <h2 className="text-sm font-medium text-neutral-600 dark:text-neutral-300">
+              {work.title}
+            </h2>
+            <p className="text-xs leading-relaxed text-neutral-500">
+              {work.description}
+            </p>
           </div>
         ))}
       </div>

@@ -1,65 +1,60 @@
 "use client";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 import axios from "axios";
-import TweetComponent, { TweetComponentType } from "./TweetComponent";
-import { BarLoader, BounceLoader } from "react-spinners";
-import Customization from "./Customization";
+import { BarLoader } from "react-spinners";
 import Preview from "./Preview";
 import { useTheme } from "next-themes";
 import HowItWorks from "./HowItWorks";
 
 export default function Hero() {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [post, setPost] = useState<TweetComponentType>();
+  const [post, setPost] = useState<any>();
   const [loading, setLoading] = useState(false);
   const { theme } = useTheme();
 
   const fetchPost = async () => {
-    if (!inputRef.current) {
-      console.log("input in empty");
-      return;
-    }
+    if (!inputRef.current?.value) return;
 
     const url = inputRef.current.value;
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/posts", {
-        url: url,
-      });
-      //   console.log(response);
+      const response = await axios.post("/api/posts", { url });
       const data = response.data;
-      if (!data) {
-        console.log(response.data);
-        return;
-      }
-      setPost(data);
+      if (data) setPost(data);
+    } catch (error) {
+      console.error("Error fetching post:", error);
+    } finally {
       setLoading(false);
-      //   inputRef.current.value = "";
-    } catch (error) {}
+    }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <div className="flex w-[40%] items-center justify-center gap-2">
+    <div className="flex w-full flex-col items-center justify-center gap-6 px-4">
+      <div className="flex w-full flex-col items-center justify-center gap-3 sm:max-w-xl sm:flex-row sm:gap-2">
         <Input ref={inputRef} />
 
-        <Button onclick={fetchPost} />
+        <div className="w-full sm:w-auto">
+          <Button onclick={fetchPost} />
+        </div>
       </div>
-
-      {/* {JSON.stringify(post.user)} */}
 
       <BarLoader
         loading={loading}
-        className="mx-auto mt-20"
+        width={150}
+        className="mx-auto mt-10"
         color={theme === "dark" ? "#fff" : "#000"}
       />
 
-      {post && <Preview post={post} />}
+      {post && (
+        <div className="flex w-full justify-center overflow-hidden">
+          <Preview post={post} />
+        </div>
+      )}
 
-      {!post && <HowItWorks />}
+      {!post && !loading && <HowItWorks />}
     </div>
   );
 }
