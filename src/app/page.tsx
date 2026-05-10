@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import ToggleTheme from "@/components/ToggleTheme";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
+import LaunchBadge from "@/components/LaunchBadge";
 
 export default function Home() {
   return (
@@ -32,6 +33,8 @@ export default function Home() {
           </div>
 
           <Hero />
+
+          <LaunchBadge />
 
           <Footer />
         </div>
